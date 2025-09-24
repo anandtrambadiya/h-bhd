@@ -66,7 +66,7 @@ window.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         msg.classList.remove("hidden");
         msg.classList.add("visible");
-      }, 3000 + index * 5000); // 5s gap between each
+      }, 3000 + index * 6500); // 5s gap between each
     });
   }
 });
@@ -84,8 +84,6 @@ function goBack() {
 function triggerSurprise() {
   const music = document.getElementById("bg-music");
   const container = document.getElementById("flower-container");
-
-  if (music) music.play();
   if (container) {
     for (let i = 0; i < 30; i++) {
       let flower = document.createElement("div");
@@ -109,5 +107,5 @@ function showMessage(who) {
 
   setTimeout(() => {
     chatBox.style.display = "none";
-  }, 4000);
+  }, 7000);
 }
