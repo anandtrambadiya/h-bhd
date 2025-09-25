@@ -1,38 +1,5 @@
 window.addEventListener("DOMContentLoaded", () => {
-  const isGreetingPage = document.getElementById("line1"); // Only exists on index.html
-  const popup = document.getElementById("welcome-popup");
-
-  if (isGreetingPage && popup) {
-    popup.style.display = "flex"; // Show popup only on greeting page
-
-    // Ensure mobile tap triggers popup close
-    document.addEventListener("touchstart", () => {
-      if (popup.style.display === "flex") closePopup();
-    }, { once: true });
-  } else {
-    runMessageFlow(); // Run message animation directly on message.html
-  }
-});
-
-// 🎉 Called when user clicks "Got it!" on popup
-function closePopup() {
-  const popup = document.getElementById("welcome-popup");
-  if (popup) popup.style.display = "none";
-
-  // 🎶 Start music after interaction (mobile-safe)
-  const music = document.getElementById("bg-music");
-  if (music && music.paused) {
-    music.play().catch(err => {
-      console.warn("Autoplay blocked:", err);
-    });
-  }
-
-  runGreetingAnimation();
-  runMessageFlow(); // In case message elements are present on greeting page
-}
-
-// ✨ Greeting page animation
-function runGreetingAnimation() {
+  // Greeting page animation
   const line1 = document.getElementById("line1");
   const line2 = document.getElementById("line2");
   const line3 = document.getElementById("line3");
@@ -70,10 +37,8 @@ function runGreetingAnimation() {
       }, 50);
     }, null, "+=0.5");
   }
-}
 
-// 💬 Message page storyline flow
-function runMessageFlow() {
+  // Message page storyline flow
   const title = document.getElementById("subgroup-title");
   const messages = [
     document.getElementById("msg-anand"),
@@ -81,7 +46,8 @@ function runMessageFlow() {
     document.getElementById("msg-final")
   ];
 
-  if (title && messages.every(Boolean)) {
+  if (title && messages.length > 0) {
+    // Step 1: Zoom in title to center
     gsap.to(title, {
       duration: 1,
       opacity: 1,
@@ -90,20 +56,27 @@ function runMessageFlow() {
       delay: 0.5
     });
 
+    // Step 2: Float title to top
     setTimeout(() => {
       title.classList.add("fixed");
     }, 2000);
 
+    // Step 3: Reveal messages one by one
     messages.forEach((msg, index) => {
       setTimeout(() => {
         msg.classList.remove("hidden");
         msg.classList.add("visible");
-      }, 3000 + index * 6500); // 6.5s gap between each
+      }, 3000 + index * 6500); // 5s gap between each
     });
   }
+});
+
+function closePopup() {
+  const popup = document.getElementById("welcome-popup");
+  if (popup) popup.style.display = "none";
 }
 
-// 🧭 Navigation
+// Navigation
 function goToMessage() {
   window.location.href = "message.html";
 }
@@ -112,12 +85,13 @@ function goBack() {
   window.location.href = "index.html";
 }
 
-// 🌸 Surprise animation
+// Surprise animation
 function triggerSurprise() {
+  const music = document.getElementById("bg-music");
   const container = document.getElementById("flower-container");
   if (container) {
     for (let i = 0; i < 30; i++) {
-      const flower = document.createElement("div");
+      let flower = document.createElement("div");
       flower.className = "flower";
       flower.style.left = Math.random() * 100 + "vw";
       flower.style.animationDuration = (Math.random() * 3 + 2) + "s";
@@ -126,7 +100,7 @@ function triggerSurprise() {
   }
 }
 
-// 💬 Legacy chat box (optional)
+// Legacy chat box (optional)
 function showMessage(who) {
   const chatBox = document.getElementById("chat-box");
   if (!chatBox) return;
