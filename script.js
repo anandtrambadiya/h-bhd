@@ -4,6 +4,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (isGreetingPage && popup) {
     popup.style.display = "flex"; // Show popup only on greeting page
+
+    // Ensure mobile tap triggers popup close
+    document.addEventListener("touchstart", () => {
+      if (popup.style.display === "flex") closePopup();
+    }, { once: true });
   } else {
     runMessageFlow(); // Run message animation directly on message.html
   }

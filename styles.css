@@ -270,6 +270,16 @@ html, body {
   50% { box-shadow: 0 0 20px #ffc3a0; }
   100% { box-shadow: 0 0 10px #ffb6f9; }
 }
+@keyframes popUp {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 
 /* ---------------------------------- */
 /* Chat Timeline Layout */
@@ -359,6 +369,18 @@ html, body {
 /* Responsive Design */
 /* ---------------------------------- */
 @media screen and (max-width: 600px) {
+  .popup-box h2 {
+    font-size: 1.5em;
+  }
+
+  .popup-box p {
+    font-size: 0.95em;
+  }
+
+  .popup-box button {
+    font-size: 0.9em;
+    padding: 8px 16px;
+  }
   .container {
     padding: 0 16px;
   }
