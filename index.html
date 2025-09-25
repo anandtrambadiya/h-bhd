@@ -10,6 +10,44 @@
 <link href="https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap" rel="stylesheet">
 
 </head>
+<div id="welcome-popup" style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(183, 113, 229, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  font-family: 'Poppins', sans-serif;
+">
+  <div style="
+    background: white;
+    color: #B771E5;
+    padding: 30px 20px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 90vw;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    animation: popUp 0.5s ease;
+  ">
+    <p style="font-size: 1em; margin-bottom: 20px;">Tap below to begin the magic ✨</p>
+    <button onclick="closePopup()" style="
+      padding: 10px 20px;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(to right, #ffb6f9, #ffc3a0);
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    ">Got it!</button>
+  </div>
+</div>
+
 <body>
   <audio id="bg-music" src="assets/music.mp3" autoplay loop></audio>
 

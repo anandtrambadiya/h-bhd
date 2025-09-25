@@ -114,3 +114,14 @@ function showMessage(who) {
     chatBox.style.display = "none";
   }, 7000);
 }
+function closePopup() {
+  const popup = document.getElementById("welcome-popup");
+  if (popup) popup.style.display = "none";
+
+  const music = document.getElementById("bg-music");
+  if (music && music.paused) {
+    music.play().catch(err => {
+      console.warn("Autoplay blocked:", err);
+    });
+  }
+}
