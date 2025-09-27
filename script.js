@@ -107,7 +107,7 @@ function showMessage(who) {
 
   chatBox.style.display = "block";
   chatBox.innerHTML = who === "anand"
-    ? "Hey buddy! This website is our birthday gift to you 🎁"
+    ? " Hey, before making this website, I was so excited. I had many messages and talks to do about us but right now I can't remember any. mai bhul gaya 🥲"
     : "Aww thank you! You both made my day 💜";
 
   setTimeout(() => {
